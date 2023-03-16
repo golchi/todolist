@@ -14,12 +14,28 @@ class listItemController extends Controller
     public function index() : View {
         $pending = listItem::where('is_complete','0')->get();
         $completed = listItem::where('is_complete','1')->get();
-        return view('welcome', [
+        return view('listItem.list', [
             'pending'=> $pending,
             'completed'=> $completed
         ]);
     }
+    public function editFormItem($id) : View {
+        $listItem = listItem::find($id);
+        return view('listItem.edit', [
+            'listItem' => $listItem
+        ]);
+    }
 
+
+    //Save listItem on submit
+    public function editItem(Request $request) {
+        //var_dump($request);
+        //exit;
+        $listItem = listItem::find($request->id);
+        $listItem->name = $request->listItem;
+        $listItem->update();
+        return redirect('/');
+    }
 
     //Save listItem on submit
     public function saveItem(Request $request) {
