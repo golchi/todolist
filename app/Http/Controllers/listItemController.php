@@ -47,12 +47,10 @@ class listItemController extends Controller
      * @return \Illuminate\Contracts\Foundation\Application|Application|RedirectResponse|Redirector
      */
     public function editItem(Request $request) {
-        //var_dump($request);
-        //exit;
         $listItem = listItem::find($request->id);
         $listItem->name = $request->listItem;
         $listItem->update();
-        return redirect('/');
+        return redirect('/')->with('confirmation_message', 'List Item successfully edited');
     }
 
     /**
@@ -65,7 +63,7 @@ class listItemController extends Controller
         $listItem->name = $request->listItem;
         $listItem->is_complete = 0;
         $listItem->save();
-        return redirect('/');
+        return redirect('/')->with('confirmation_message', 'List Item successfully saved');
     }
 
     /**
@@ -77,7 +75,7 @@ class listItemController extends Controller
         $listItem = listItem::find($request->id);
         $listItem->is_complete = 1;
         $listItem->save();
-        return redirect('/');
+        return redirect('/')->with('confirmation_message', 'List Item successfully marked as completed');
     }
 
     /**
@@ -87,6 +85,6 @@ class listItemController extends Controller
      */
     public function deleteItem($id) {
         listItem::find($id)->delete();
-        return redirect('/');
+        return redirect('/')->with('confirmation_message', 'List Item successfully deleted');
     }
 }
