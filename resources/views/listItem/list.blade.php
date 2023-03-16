@@ -22,7 +22,10 @@
             <h3>Completed Items are:</h3>
             <ol>
                 @foreach($completed as $item)
-                    <li>{{$item->name}} completed on {{$item->updated_at}}</li>
+                    <li>
+                        {{$item->name}} completed on {{$item->updated_at}} -
+                        <a href="{{url('listItem/delete/'.$item->id)}}">Delete</a>
+                    </li>
                 @endforeach
             </ol>
         </div><br/>

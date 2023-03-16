@@ -86,9 +86,7 @@ class listItemController extends Controller
      * @return \Illuminate\Contracts\Foundation\Application|Application|RedirectResponse|Redirector
      */
     public function deleteItem($id) {
-        $listItem = listItem::find($request->id);
-        $listItem->name = $request->listItem;
-        $listItem->update();
+        listItem::find($id)->delete();
         return redirect('/');
     }
 }
