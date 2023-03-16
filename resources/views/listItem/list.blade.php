@@ -13,6 +13,7 @@
                     <li>{{$item->name}}  |
                         <button type="submit" name="id" value="{{$item->id}}">Mark as complete</button>
                         <a href="{{url('listItem/edit/'.$item->id)}}">Edit</a>
+                        <a href="{{url('listItem/delete/'.$item->id)}}">Delete</a>
                     </li>
                 @endforeach
             </ol>
