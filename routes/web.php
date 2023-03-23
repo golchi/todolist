@@ -21,7 +21,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/', [listItemController::class, 'index']);
+//Route::get('/', [listItemController::class, 'index']);
 Route::get('/listItem', [listItemController::class, 'index']);
 Route::get('/listItem/edit/{id}', [listItemController::class, 'editFormItem']);
 Route::post('/listItem/edit', [listItemController::class, 'editItem']);
@@ -30,4 +30,5 @@ Route::post('/saveItem', [listItemController::class, 'saveItem']);
 Route::post('/complete', [listItemController::class, 'complete']);
 
 
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
