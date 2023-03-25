@@ -15,7 +15,7 @@
                     @endif
                     <div class="row">
                         <div class=" col-md-8" >
-                            <h2>All items</h2>
+                            <h2>All items from all users</h2>
                             <form method="post" action="/complete" accept-charset="UTF-8">
                                 @csrf
                                 <ol>
